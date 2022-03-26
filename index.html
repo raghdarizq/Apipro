@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Currency Exchange App</title>
+</head>
+<body>
+  <div id="app">
+    <h1>Currency Exchange App</h1>
+    <div class="container">
+      <div class="container-one">
+        <select
+          name="first-currency"
+          id="first-currency"
+          @change="calculateResults()"
+          v-model="currency_one"
+        >
+          <option value="ILS">ILS</option>
+          <option value="USD">USD</option>
+        </select>
+        <input
+          type="number"
+          name="input-one"
+          id="input-one"
+          v-model="amountOne"
+          @input="calculateResults()"
+        />
+      </div>
+      <div class="container-two">
+        <br>
+        <button @click="switchValues()">Switch</button>
+        <br>
+        <h4 id="baseValue">1 {{ currency_one }} = {{ rate }} {{ currency_two }}</h4>
+      </div>
+      <div class="container-there">
+        <select
+          id="currency-two"
+          @change="calculateResults()"
+          v-model="currency_two"
+        >
+        <option value="ILS">ILS</option>
+        <option value="USD">USD</option>
+        </select>
+
+        <input
+          type="number"
+          id="amount-two"
+          placeholder="0"
+          v-model="amountTwo"
+          disabled
+        />
+      </div>
+      <div class="container-four">
+        <h4 id="lastlyUpdated">Lastly Updated: {{ data.time_last_update_utc }}</h4>
+      </div>
+    </div>
+  </div>
+    <script src="vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
